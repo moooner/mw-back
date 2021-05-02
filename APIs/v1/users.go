@@ -19,6 +19,15 @@ func SignUp(context *gin.Context) {
 	appleUserId := context.Query("appleUserId")
 	googleUserId := context.Query("googleUserId")
 
+	if appleUserId == "" && googleUserId == "" {
+		context.JSON(400, gin.H{
+			"status":  400,
+			"message": "Bad request.",
+			"data":    nil,
+		})
+		return
+	}
+
 	// parse response data
 	data := map[string]string{
 		"userId":       "1",
