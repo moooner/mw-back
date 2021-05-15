@@ -4,12 +4,14 @@ CREATE DATABASE mw CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
 -- use db
 USE mw;
 
--- create account 'dev'
-CREATE USER 'dev'@'localhost' IDENTIFIED BY 'dev123';
+-- create account 'moooner'
+CREATE USER 'moooner'@'localhost' IDENTIFIED BY 'dev123';
 FLUSH PRIVILEGES;
-GRANT ALL PRIVILEGES ON mw.* to dev@localhost;
-GRANT SUPER ON *.* TO dev@localhost;
+GRANT ALL PRIVILEGES ON mw.* to 'moooner'@'localhost';
+GRANT SUPER ON *.* TO 'moooner'@'localhost';
 FLUSH PRIVILEGES;
+
+SELECT User, Host, authentication_string FROM mysql.user;
 
 -- drop and create tables
 drop table if exists `user`;
