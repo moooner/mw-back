@@ -1,8 +1,17 @@
-create database if not exists login_db default CHARACTER SET UTF8;
+-- create db 'mw'
+CREATE DATABASE mw CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
 
-# GRANT ALL PRIVILEGES ON login_db.* TO @localhost IDENTIFIED BY 'login';
-USE login_db;
+-- use db
+USE mw;
 
+-- create account 'dev'
+CREATE USER 'dev'@'localhost' IDENTIFIED BY 'dev123';
+FLUSH PRIVILEGES;
+GRANT ALL PRIVILEGES ON mw.* to dev@localhost;
+GRANT SUPER ON *.* TO dev@localhost;
+FLUSH PRIVILEGES;
+
+-- drop and create tables
 drop table if exists users;
 create table if not exists users(
     user_id INT PRIMARY KEY AUTO_INCREMENT,
