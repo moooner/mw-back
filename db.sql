@@ -25,16 +25,16 @@ create table if not exists `user`(
 
 drop table if exists question;
 create table if not exists question(
-    idx                 int                 primary key auto_increment,
+    idx                 int unsigned        primary key auto_increment,
     question_text       text                not null,
     delta               float               not null
 );
 
 drop table if exists customized_value_log;
 create table if not exists customized_value_log(
-    idx                 int                 primary key auto_increment,
-    user_idx            int                 not null,
-    question_idx        varchar(32)         not null,
+    idx                 int unsigned        primary key auto_increment,
+    user_idx            int unsigned        not null,
+    question_idx        int unsigned        not null,
     answer              boolean             not null
 );
 
