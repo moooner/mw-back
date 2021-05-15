@@ -12,26 +12,27 @@ GRANT SUPER ON *.* TO dev@localhost;
 FLUSH PRIVILEGES;
 
 -- drop and create tables
-drop table if exists users;
-create table if not exists users(
-    user_id INT PRIMARY KEY AUTO_INCREMENT,
-    google_user_id VARCHAR(32) NULL,
-    apple_user_id VARCHAR(32) NULL,
-    email CHAR(50) NULL,
-    customized_value FLOAT default(0)
-) ENGINE = INNODB;
-
-drop table if exists customized_value_logs;
-create table if not exists customized_value_logs(
-    log_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    user_id int NOT NULL,
-    question_id VARCHAR(32) NOT NULL,
-    answer boolean
+drop table if exists `user`;
+create table if not exists `user`(
+    idx                 int unsigned        primary key auto_increment,
+    google_user_id      varchar(32)         null,
+    apple_user_id       varchar(32)         null,
+    email               varchar(50)         null,
+    customized_value    float               not null default 0
 );
 
-drop table if exists questions;
-create table if not exists questions(
-    question_id INT PRIMARY KEY AUTO_INCREMENT,
-    question_text TEXT NOT NULL,
-    delta FLOAT NOT NULL
+drop table if exists question;
+create table if not exists question(
+    idx                 int                 primary key auto_increment,
+    question_text       text                not null,
+    delta               float               not null
 );
+
+drop table if exists customized_value_log;
+create table if not exists customized_value_log(
+    idx                 int                 primary key auto_increment,
+    user_idx            int                 not null,
+    question_idx        varchar(32)         not null,
+    answer              boolean             not null
+);
+
