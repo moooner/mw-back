@@ -1,8 +1,8 @@
-package APIs
+package main
 
 import (
 	"github.com/gin-gonic/gin"
-	v1 "github.com/moooner/mw-back/APIs/v1"
+	v1 "github.com/moooner/mw-back/main/v1"
 )
 
 func Router(router *gin.Engine) {
