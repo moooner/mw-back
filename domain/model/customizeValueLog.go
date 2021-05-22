@@ -5,4 +5,8 @@ type CustomizeValueLog struct {
 	UserIdx     uint
 	QuestionIdx uint
 	Answer      bool
+
+	deleted uint
+	created string
+	updated string
 }

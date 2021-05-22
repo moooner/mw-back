@@ -1,9 +1,18 @@
 package model
 
+import (
+	"gorm.io/gorm"
+	"time"
+)
+
 type User struct {
-	Idx            uint
-	GoogleUserId   string
-	AppleUserId    string
-	Email          string
-	CustomizeValue float64
+	Idx             uint `gorm:"primaryKey"`
+	GoogleUserId    string
+	AppleUserId     string
+	Email           string
+	CustomizedValue float64
+
+	deleted gorm.DeletedAt
+	created time.Time
+	updated time.Time
 }

@@ -3,13 +3,13 @@ package main
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/moooner/mw-back/api"
-	"gorm.io/driver/mysql"
-	"gorm.io/gorm"
+	"github.com/moooner/mw-back/domain"
 )
 
 func main() {
-	dsn := "user:pass@tcp(127.0.0.1:3306)/mw?charset=utf8mb4&parseTime=True&loc=Local"
-	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
+	if domain.Err != nil {
+		panic("DB connection failure.")
+	}
 
 	router := gin.Default()
 	api.Router(router)
