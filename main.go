@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/moooner/mw-back/APIs"
+	"github.com/moooner/mw-back/api"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
@@ -12,6 +12,6 @@ func main() {
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 
 	router := gin.Default()
-	APIs.Router(router)
+	api.Router(router)
 	router.Run() // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
 }
