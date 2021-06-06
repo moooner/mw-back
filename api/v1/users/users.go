@@ -53,7 +53,7 @@ func Get(context *gin.Context) {
 
 	context.JSON(200, gin.H{
 		"status":  200,
-		"message": "Signed up.",
+		"message": "got it.",
 		"datum":   user,
 	})
 }

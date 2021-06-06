@@ -14,8 +14,8 @@ FLUSH PRIVILEGES;
 SELECT User, Host, authentication_string FROM mysql.user;
 
 -- drop and create tables
-drop table if exists `users`;
-create table if not exists `users`(
+drop table if exists users;
+create table if not exists users(
     idx                 int unsigned        primary key auto_increment,
     google_user_id      varchar(32)         null,
     apple_user_id       varchar(32)         null,
@@ -26,46 +26,6 @@ create table if not exists `users`(
     created             timestamp           not null default current_timestamp,
     updated             timestamp           not null default current_timestamp on update current_timestamp
 );
-
-drop table if exists `losses`;
-create table if not exists `losses`(
-    idx                 int unsigned        primary key auto_increment,
-    google_user_id      varchar(32)         null,
-    apple_user_id       varchar(32)         null,
-    email               varchar(50)         null,
-    customized_value    float               not null default 0,
-
-    deleted             timestamp           null,
-    created             timestamp           not null default current_timestamp,
-    updated             timestamp           not null default current_timestamp on update current_timestamp
-    );
-
-drop table if exists `data`;
-drop table if exists `datum`;
-create table if not exists `data`(
-    idx                 int unsigned        primary key auto_increment,
-    google_user_id      varchar(32)         null,
-    apple_user_id       varchar(32)         null,
-    email               varchar(50)         null,
-    customized_value    float               not null default 0,
-
-    deleted             timestamp           null,
-    created             timestamp           not null default current_timestamp,
-    updated             timestamp           not null default current_timestamp on update current_timestamp
-    );
-
-drop table if exists `data_linked`;
-create table if not exists `data_linked`(
-    idx                 int unsigned        primary key auto_increment,
-    google_user_id      varchar(32)         null,
-    apple_user_id       varchar(32)         null,
-    email               varchar(50)         null,
-    customized_value    float               not null default 0,
-
-    deleted             timestamp           null,
-    created             timestamp           not null default current_timestamp,
-    updated             timestamp           not null default current_timestamp on update current_timestamp
-    );
 
 
 drop table if exists question;
